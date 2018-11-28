@@ -81,6 +81,28 @@
                 </configuration>
             </plugin>
 
+            <!-- for Heroku runner -->
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>
+                                def scriptFile = new File('target/runner.sh')
+                                scriptFile.write 'cd target\n'
+                                scriptFile.append 'java -jar ' + project.build.finalName + '.jar\n'
+                            </source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- Copy dependency -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
