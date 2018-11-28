@@ -6,8 +6,9 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level="all">
             <AppenderRef ref="Console"/>
         </Root>
+        <Logger name="ru.dmitriymx.tlgbot.TlgBot" level="trace"/>
     </Loggers>
 </Configuration>

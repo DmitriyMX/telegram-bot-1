@@ -11,6 +11,11 @@ public class TlgBot extends TelegramLongPollingBot {
     private static final String TOKEN = System.getenv("TLG_TOKEN");
     private static final String NAME  = System.getenv("TLG_NAME");
 
+    static {
+        log.debug("Bot name: {}", NAME);
+        log.debug("Bot token: {}", TOKEN);
+    }
+
     @Override
     public void onUpdateReceived(Update update) {
         log.trace("onUpdateReceived.enter; update={}", update);
