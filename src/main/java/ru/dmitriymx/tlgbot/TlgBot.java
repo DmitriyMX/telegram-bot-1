@@ -8,8 +8,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Slf4j
 public class TlgBot extends TelegramLongPollingBot {
-    private static final String TOKEN = System.getenv("TLG_TOKEN");
-    private static final String NAME  = System.getenv("TLG_NAME");
+    private static final String TOKEN = Utils.getVariable("TLG_TOKEN");
+    private static final String NAME  = Utils.getVariable("TLG_NAME");
 
     static {
         log.debug("Bot name: {}", NAME);
