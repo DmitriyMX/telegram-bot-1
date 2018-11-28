@@ -17,7 +17,7 @@ public class Main {
 
         try {
             log.trace("try api.registerBot;");
-            api.registerBot(new TlgBot());
+            api.registerBot(bot);
             log.trace("correct api.registerBot;");
         } catch (TelegramApiRequestException e) {
             log.error("Register bot error", e);
