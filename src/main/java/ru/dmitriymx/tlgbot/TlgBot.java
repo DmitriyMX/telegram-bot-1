@@ -24,10 +24,12 @@ public class TlgBot extends TelegramLongPollingCommandBot {
 
     public TlgBot() {
         super(NAME);
+        registerCommands();
     }
 
     public TlgBot(DefaultBotOptions options) {
         super(options, NAME);
+        registerCommands();
     }
 
     private void registerCommands() {
