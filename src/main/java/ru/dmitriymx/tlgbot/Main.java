@@ -9,6 +9,7 @@ import ru.dmitriymx.tlgbot.service.EchoService;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
+        EnvPropLogbackConfigurator.setup();
         ApiContextInitializer.init();
         TelegramBotsApi api = new TelegramBotsApi();
 
