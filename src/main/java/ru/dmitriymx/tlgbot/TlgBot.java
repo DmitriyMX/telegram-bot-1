@@ -5,6 +5,7 @@ import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.dmitriymx.tlgbot.commands.HelpCommand;
+import ru.dmitriymx.tlgbot.commands.KeyboardCommand;
 import ru.dmitriymx.tlgbot.commands.StartCommand;
 import ru.dmitriymx.tlgbot.service.Service;
 
@@ -24,15 +25,18 @@ public class TlgBot extends TelegramLongPollingCommandBot {
 
     public TlgBot() {
         super(NAME);
+        registerCommands();
     }
 
     public TlgBot(DefaultBotOptions options) {
         super(options, NAME);
+        registerCommands();
     }
 
     private void registerCommands() {
         register(new StartCommand());
         register(new HelpCommand());
+        register(new KeyboardCommand());
     }
 
     public void addService(Service service) {
