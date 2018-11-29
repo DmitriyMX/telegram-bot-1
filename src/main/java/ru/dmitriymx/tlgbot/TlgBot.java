@@ -1,6 +1,7 @@
 package ru.dmitriymx.tlgbot;
 
 import lombok.extern.slf4j.Slf4j;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.dmitriymx.tlgbot.commands.HelpCommand;
@@ -23,7 +24,13 @@ public class TlgBot extends TelegramLongPollingCommandBot {
 
     public TlgBot() {
         super(NAME);
+    }
 
+    public TlgBot(DefaultBotOptions options) {
+        super(options, NAME);
+    }
+
+    private void registerCommands() {
         register(new StartCommand());
         register(new HelpCommand());
     }

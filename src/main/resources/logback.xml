@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Stop output INFO at start -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <!--
+        Environment variables:
+        - CONSOLE_LOG_PATTERN
+        - DISABLE_DATEFORMAT
+        - LOG_DATEFORMAT_PATTERN
+        - LOG_THREAD_PATTERN
+        - LOG_LOGGER_PATTERN
+    -->
+
+    <if condition='property("DISABLE_DATEFORMAT").contains("1")'>
+        <then>
+            <property name="DATEFORMAT" value=" "/>
+        </then>
+        <else>
+            <property name="DATEFORMAT" value="%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}"/>
+        </else>
+    </if>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${CONSOLE_LOG_PATTERN:-${DATEFORMAT} %5level --- ${LOG_THREAD_PATTERN:-\(%15.15thread\)} ${LOG_LOGGER_PATTERN:-[%-40.40logger{39}]} : %msg%n}</pattern>
+        </layout>
+        <target>System.out</target>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
